@@ -15,6 +15,7 @@ button.btn {
   width: 200px;
   height: 200px;
   margin: 15px;
+  font-size: 2em;
   background-color: slategray;
   border-radius: 4px;
   border: 2px solid rgba(0, 0, 0, 0.14);
@@ -25,4 +26,9 @@ button.btn {
 button.btn:active {
   background-color: white;
   outline: none;
+}
+
+button.btn.on {
+  background: firebrick;
+  color: white;
 }

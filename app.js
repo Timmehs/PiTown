@@ -1,5 +1,4 @@
 var express = require('express');
-var browserSync = require('browser-sync');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -10,15 +9,6 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
-
-app.listen(port, listening);
-
-function listening () {
-  browserSync({
-    proxy: 'localhost:' + port,
-    files: ['public/**/*.{js,css}', 'views/**/*.{jade}']
-  });
-}
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

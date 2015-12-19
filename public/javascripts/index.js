@@ -1,9 +1,14 @@
 $(function() {
 
-
-  var states = ['off', 'off', 'off', 'off', 'off', 'off', 'off', 'off'];
-
   $('.buttons-container').on('click', 'button', function (e) {
-    console.log('Button ' + this.id + 'clicked');
+    var $btn  = $(this);
+    $.post("/button/" + this.id, function (e) {
+      console.log(e.message);
+      if (e.status === true) {
+        $btn.addClass('on');
+      } else {
+        $btn.removeClass('on');
+      }
+    });
   });
 });

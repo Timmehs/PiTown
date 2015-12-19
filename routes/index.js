@@ -10,4 +10,19 @@ router.get('/', function(req, res, next) {
   });
 });
 
+/* POST a control toggle. */
+var buttons = [
+  false, false, false, false, false, false
+];
+
+router.post('/button/:id', function(req, res, next) {
+  var id = req.params.id;
+  var status = buttons[id] = buttons[id] ? false : true;
+  res.json({
+    'success': true,
+    message: req.params.id + ' button toggled',
+    status: status
+  });
+});
+
 module.exports = router;
