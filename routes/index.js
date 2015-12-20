@@ -13,14 +13,14 @@ router.get('/', function(req, res, next) {
 
 /* POST a control toggle. */
 var leds = [
-        new GPIO(4, 'out'),
-        new GPIO(14,'out'),
-        new GPIO(15, 'out'),
-        new GPIO(17, 'out'),
-        new GPIO(18, 'out'),
-        new GPIO(27, 'out'),
-        new GPIO(22, 'out'),
-        new GPIO(24, 'out')
+        new GPIO(4, 'out').writeSync(1),
+        new GPIO(14,'out').writeSync(1),
+        new GPIO(15, 'out').writeSync(1),
+        new GPIO(17, 'out').writeSync(1),
+        new GPIO(18, 'out').writeSync(1),
+        new GPIO(27, 'out').writeSync(1),
+        new GPIO(22, 'out').writeSync(1),
+        new GPIO(23, 'out').writeSync(1)
 ];
 
 router.post('/button/:id', function(req, res, next) {
