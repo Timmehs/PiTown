@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var port = process.env.PORT || 8000;
 var routes = require('./routes/index');
 var users = require('./routes/users');
-
+var _ = require('lodash');
 var app = express();
 
 // view engine setup

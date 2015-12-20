@@ -2,6 +2,7 @@ var express = require('express');
 var GPIO = require('onoff').Gpio;
 var router = express.Router();
 var os = require('os');
+var _ = require('lodash');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -13,15 +14,19 @@ router.get('/', function(req, res, next) {
 
 /* POST a control toggle. */
 var leds = [
-        new GPIO(4, 'out').writeSync(1),
-        new GPIO(14,'out').writeSync(1),
-        new GPIO(15, 'out').writeSync(1),
-        new GPIO(17, 'out').writeSync(1),
-        new GPIO(18, 'out').writeSync(1),
-        new GPIO(27, 'out').writeSync(1),
-        new GPIO(22, 'out').writeSync(1),
-        new GPIO(23, 'out').writeSync(1)
+        new GPIO(4, 'out'),
+        new GPIO(14,'out'),
+        new GPIO(15, 'out'),
+        new GPIO(17, 'out'),
+        new GPIO(18, 'out'),
+        new GPIO(27, 'out'),
+        new GPIO(22, 'out'),
+        new GPIO(23, 'out')
 ];
+
+_.each(leds, function (led) {
+    led.writeSync(1);
+});
 
 router.post('/button/:id', function(req, res, next) {
   var id = req.params.id, status;
