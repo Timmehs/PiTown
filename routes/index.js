@@ -7,7 +7,7 @@ var os = require('os');
 router.get('/', function(req, res, next) {
   res.render('index', {
     title: 'PiTown',
-    localIp: os.networkInterfaces().en0[1].address
+    localIp: ipAddr()
   });
 });
 
@@ -40,4 +40,15 @@ router.post('/button/:id', function(req, res, next) {
   });
 });
 
+
+function ipAddr() {
+  var interfaces = os.networkInterfaces(), ip = null;
+  if (interfaces.en0 !== undefined) {
+    ip = interfaces.en0[1].address;
+  } else if (interfaces.wlan0 !== undefined) {
+    ip = interfaces.wlan0[0].address;
+  }
+
+  return ip;
+}
 module.exports = router;
